@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmritiCare NER - Cognitive Activities & Games Clinical Guide</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap');
+
+    @page {
+      size: A4;
+      margin: 1.6cm 1.4cm 1.6cm 1.4cm;
+      @bottom-right {
+        content: counter(page);
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 9pt;
+        color: #64748b;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #0f172a;
+      background-color: #ffffff;
+      line-height: 1.55;
+      font-size: 10pt;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Header Banner */
+    .header-banner {
+      background: linear-gradient(135deg, #042f2e 0%, #0d9488 60%, #f59e0b 100%);
+      color: #ffffff;
+      padding: 24px 28px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      border: 3px solid #0f172a;
+      box-shadow: 4px 4px 0px #0f172a;
+    }
+
+    .badge-pill {
+      display: inline-block;
+      background: #fef08a;
+      color: #0f172a;
+      font-weight: 800;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1.5px solid #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .header-banner h1 {
+      font-size: 20pt;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .header-banner p {
+      font-size: 10pt;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      font-size: 8.5pt;
+    }
+
+    .meta-item strong {
+      display: block;
+      color: #fef08a;
+      font-weight: 800;
+      font-size: 7.5pt;
+      text-transform: uppercase;
+    }
+
+    /* Section Styling */
+    .section-title {
+      font-size: 13pt;
+      font-weight: 900;
+      color: #0f172a;
+      border-bottom: 2.5px solid #0f172a;
+      padding-bottom: 4px;
+      margin-top: 24px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .intro-box {
+      background: #f8fafc;
+      border: 2px solid #0f172a;
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      font-size: 9.5pt;
+      box-shadow: 3px 3px 0px #0f172a;
+    }
+
+    /* Game Card */
+    .game-card {
+      background: #ffffff;
+      border: 2.5px solid #0f172a;
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+      box-shadow: 3.5px 3.5px 0px #0f172a;
+      page-break-inside: avoid;
+    }
+
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 8px;
+    }
+
+    .game-title-group h3 {
+      font-size: 13pt;
+      font-weight: 900;
+      color: #0f172a;
+    }
+
+    .game-title-group .subtitle {
+      font-size: 9pt;
+      font-weight: 700;
+      color: #0d9488;
+    }
+
+    .domain-badge {
+      background: #fef3c7;
+      color: #78350f;
+      border: 1.5px solid #0f172a;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 8pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .box-mini {
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 9pt;
+    }
+
+    .box-mini strong {
+      display: block;
+      color: #0f172a;
+      font-weight: 800;
+      font-size: 8.5pt;
+      margin-bottom: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .box-mini p, .box-mini ul {
+      color: #334155;
+      font-size: 8.8pt;
+    }
+
+    .box-mini ul {
+      margin-left: 16px;
+      margin-top: 3px;
+    }
+
+    .box-mini li {
+      margin-bottom: 2px;
+    }
+
+    .highlight-teal {
+      background: #f0fdfa;
+      border-color: #99f6e4;
+    }
+
+    .highlight-amber {
+      background: #fffbeb;
+      border-color: #fde68a;
+    }
+
+    /* Comparison Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 20px 0;
+      font-size: 8.5pt;
+      border: 2px solid #0f172a;
+      border-radius: 12px;
+      overflow: hidden;
+      page-break-inside: avoid;
+    }
+
+    th {
+      background: #0f172a;
+      color: #ffffff;
+      text-align: left;
+      padding: 8px 10px;
+      font-weight: 800;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #e2e8f0;
+      color: #1e293b;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Non-Diagnostic Disclaimer Box */
+    .disclaimer-box {
+      background: #ecfdf5;
+      border: 2px solid #059669;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 8.5pt;
+      color: #065f46;
+      margin-top: 20px;
+      page-break-inside: avoid;
+    }
+
+    .disclaimer-box strong {
+      font-weight: 800;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* Print Specific Helpers */
+    @media print {
+      body {
+        font-size: 9.5pt;
+      }
+      .no-print {
+        display: none;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+    }
+
+    .print-btn {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 10pt;
+      font-weight: 800;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 2px 2px 0px #64748b;
+    }
+
+    .print-btn:hover {
+      background: #1e293b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Print Button for Browser View -->
+  <div class="no-print" style="text-align: right;">
+    <button class="print-btn" onclick="window.print()">
+      🖨️ Save as PDF / Print Document
+    </button>
+  </div>
+
+  <!-- Header Banner -->
+  <div class="header-banner">
+    <span class="badge-pill">Smart India Hackathon 2026 • MoHFW / MDoNER</span>
+    <h1>SmritiCare NER: Cognitive Activities & Games Guide</h1>
+    <p>Comprehensive Clinical & Functional Overview of Cognitive Wellness Exercises for Elderly Care</p>
+    
+    <div class="meta-grid">
+      <div class="meta-item">
+        <strong>Target Group</strong>
+        Elderly / Mild Cognitive Changes
+      </div>
+      <div class="meta-item">
+        <strong>Cultural Setting</strong>
+        8 North Eastern States (NER)
+      </div>
+      <div class="meta-item">
+        <strong>Adaptive Engine</strong>
+        3 Pacing Tiers (Gentle / Std / Active)
+      </div>
+      <div class="meta-item">
+        <strong>Clinical Intent</strong>
+        Non-Diagnostic Wellness & Habit
+      </div>
+    </div>
+  </div>
+
+  <!-- Introduction / Clinical Philosophy -->
+  <div class="intro-box">
+    <strong style="color:#0f172a; font-size:10pt;">🌿 Clinical Purpose & Design Philosophy</strong>
+    <p style="margin-top: 4px;">
+      SmritiCare NER provides accessible, culturally familiar cognitive stimulation activities engineered to support memory preservation, executive functioning, multisensory processing, and daily routine retention. Unlike clinical screening tests that induce anxiety through timers and failure screens, every activity in SmritiCare is designed for <strong>dignity, positive reinforcement, and stress-free engagement</strong>.
+    </p>
+  </div>
+
+  <!-- SECTION 1: BASELINE & PERSONALIZATION -->
+  <div class="section-title">
+    <span>🧭</span> 1. The Foundation: Memory Baseline Check & Adaptive Pacing
+  </div>
+
+  <div class="game-card">
+    <div class="game-header">
+      <div class="game-title-group">
+        <h3>Memory Baseline Check</h3>
+        <span class="subtitle">Onboarding Calibration & Comfort Setting</span>
+      </div>
+      <span class="domain-badge">Onboarding & Pace Calibration</span>
+    </div>
+    <div class="grid-2col">
+      <div class="box-mini highlight-teal">
+        <strong>🎯 Why It Is Used & What It Does</strong>
+        <p>A quick, 2-minute 5-task calibration completed before regular games. Evaluates visual memory, sequence recall, pattern completion, and item matching to calculate an initial 0–100 score.</p>
+      </div>
+      <div class="box-mini highlight-amber">
+        <strong>💡 How It Helps Patient & Caregiver</strong>
+        <p>Assigns the patient into their ideal initial pacing tier: <strong>Gentle Support (0–59)</strong>, <strong>Standard Rhythm (60–89)</strong>, or <strong>Active Challenge (90–100)</strong>. Eliminates frustration and prevents fatigue.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: THE 8 COGNITIVE ACTIVITIES -->
+  <div class="section-title">
+    <span>🎮</span> 2. The 8 Targeted Cognitive Activities & Games
+  </div>
+
+  <!-- 1. Memory Weave -->
+  <div class="game-card">
+    <div class="game-header">
+      <div class="game-title-group">
+        <h3>1. Memory Weave</h3>
+        <span class="subtitle">Threads of My Life • Visual Association & Recall</span>
+      </div>
+      <span class="domain-badge">Episodic & Semantic Memory</span>
+    </div>
+    <div class="grid-2col">
+      <div class="box-mini">
+        <strong>🧠 Targeted Cognitive Domain</strong>
+        <ul>
+          <li>Visual-spatial memory & associative pairing.</li>
+          <li>Short-term retention of hidden card locations.</li>
+          <li>Semantic recognition of North Eastern cultural artifacts.</li>
+        </ul>
+      </div>
+      <div class="box-mini">
+        <strong>🕹️ Gameplay & Adaptive Mechanics</strong>
+        <ul>
+          <li><strong>Gentle:</strong> 2 pairs (4 cards), 3 hints, 45s timer, full text hints.</li>
+          <li><strong>Standard:</strong> 3 pairs (6 cards), 2 hints, 35s timer.</li>
+          <li><strong>Active:</strong> 4 pairs (8 cards), 1 hint, 25s timer.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="box-mini highlight-teal" style="margin-top: 8px;">
+      <strong>🌟 Therapeutic Benefit to the Patient</strong>
+      Stimulates the hippocampus and temporal lobe. Using culturally familiar symbols (Assam Tea, Jaapi, Muga Silk, Hornbill) taps into long-term semantic memory reserves (Reminiscence Therapy), making recall feel comforting rather than clinical.
+    </div>
+  </div>
+
+  <!-- 2. Daily Routine -->
+  <div class="game-card">
+    <div class="game-header">
+      <div class="game-title-group">
+        <h3>2. Daily Routine</h3>
+        <span class="subtitle">My Day Flow • Step Sequencing & Executive Function</span>
+      </div>
+      <span class="domain-badge">Executive Function & Sequencing</span>
+    </div>
+    <div class="grid-2col">
+      <div class="box-mini">
+        <strong>🧠 Targeted Cognitive Domain</strong>
+        <ul>
+          <li>Executive sequencing and logical order planning.</li>
+          <li>Procedural memory retention (ADLs / Daily Living Activities).</li>
+          <li>Error detection and step reorganization.</li>
+        </ul>
+      </div>
+      <div class="box-mini">
+        <strong>🕹️ Gameplay & Adaptive Mechanics</strong>
+        <ul>
+          <li><strong>Gentle:</strong> 3 routine steps with supportive sequential hints.</li>
+          <li><strong>Standard:</strong> 4 steps with balanced drag-and-drop ordering.</li>
+          <li><strong>Active:</strong> 5 nuanced morning/evening steps.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="box-mini highlight-amber" style="margin-top: 8px;">
+      <strong>🌟 Therapeutic Benefit to the Patient</strong>
+      Reinforces procedural memory pathways responsible for daily self-care (waking up, making tea, taking prescribed medicine, watering garden). Helps maintain independence and minimizes confusion regarding daily chronology.
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- 3. Sensory Soundscape -->
+  <div class="game-card">
+    <div class="game-header">
+      <div class="game-title-group">
+        <h3>3. Sensory Soundscape</h3>
+        <span class="subtitle">Sounds of NER • Calming Auditory Recognition</span>
+      </div>
+      <span class="domain-badge">Auditory Perception & Sensory Calming</span>
+    </div>
+    <div class="grid-2col">
+      <div class="box-mini">
+        <strong>🧠 Targeted Cognitive Domain</strong>
+        <ul>
+          <li>Auditory discrimination and sound-to-image association.</li>
+          <li>Cross-modal sensory processing (hearing & visual matching).</li>
+          <li>Sensory grounding and autonomic relaxation.</li>
+        </ul>
+      </div>
+      <div class="box-mini">
+        <strong>🕹️ Gameplay & Adaptive Mechanics</strong>
+        <ul>
+          <li><strong>Gentle:</strong> 2 options (1 distractor), 4.0s tone, unlimited replay.</li>
+          <li><strong>Standard:</strong> 3 options, 3.2s tone, unlimited replay.</li>
+          <li><strong>Active:</strong> 4 options (subtle audio differences), 2.8s tone.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="box-mini highlight-teal" style="margin-top: 8px;">
+      <strong>🌟 Therapeutic Benefit to the Patient</strong>
+      Utilizes nature and environmental soundscapes (rainforest rain, Brahmaputra river gentle breeze, mountain birds, flute melody) to lower agitation (sundowning syndrome) while exercising auditory cortex processing.
+    </div>
+  </div>
+
+  <!-- 4. Rhythm Weaver -->
+  <div class="game-card">
+    <div class="game-header">
+      <div class="game-title-group">
+        <h3>4. Rhythm Weaver</h3>
+        <span class="subtitle">Bihu & Folk Beats • Motor Timing & Working Memory</span>
+      </div>
+      <span class="domain-badge">Motor Timing & Working Memory</span>
+    </div>
+    <div class="grid-2col">
+      <div class="box-mini">
+        <strong>🧠 Targeted Cognitive Domain</strong>
+        <ul>
+          <li>Auditory working memory and short-term sequence holding.</li>
+          <li>Fine motor coordination & rhythm synchronization.</li>
+          <li>Parietal-cerebellar motor planning.</li>
+        </ul>
+      </div>
+      <div class="box-mini">
+        <strong>🕹️ Gameplay & Adaptive Mechanics</strong>
+        <ul>
+          <li><strong>Gentle:</strong> 3-beat rhythm pattern, slow 800ms tempo, 600ms tolerance.</li>
+          <li><strong>Standard:</strong> 4-beat rhythm pattern, 650ms tempo, 450ms tolerance.</li>
+          <li><strong>Active:</strong> 5-beat rhythm pattern, 500ms tempo, 350ms tolerance.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="box-mini highlight-amber" style="margin-top: 8px;">
+      <strong>🌟 Therapeutic Benefit to the Patient</strong>
+      Rhythm exercises stimulate auditory-motor neural synchronization. Folk beats (Bihu Dhol, Dholak, Peepa) evoke emotional joy, stimulate motor reflexes, and enhance finger agility on touch screens.
+    </div>
+  </div>
+
+  <!-- 5. Dual-Task Journey -->
+  <div class="game-card">
+    <div class="game-header">
+      <div class="game-title-group">
+        <h3>5. Dual-Task Journey</h3>
+        <span class="subtitle">Focus & Stride • Divided Attention & Inhibitory Control</span>
+      </div>
+      <span class="domain-badge">Divided Attention & Cognitive Control</span>
+    </div>
+    <div class="grid-2col">
+      <div class="box-mini">
+        <strong>🧠 Targeted Cognitive Domain</strong>
+        <ul>
+          <li>Divided attention (handling 2 simultaneous stimuli).</li>
+          <li>Reaction control and selective inhibition (Go / No-Go).</li>
+          <li>Working memory updating during ongoing motion.</li>
+        </ul>
+      </div>
+      <div class="box-mini">
+        <strong>🕹️ Gameplay & Adaptive Mechanics</strong>
+        <ul>
+          <li><strong>Gentle:</strong> 6 steps, 2 chimes, generous 3200ms response window.</li>
+          <li><strong>Standard:</strong> 8 steps, 3 chimes, 2200ms response window.</li>
+          <li><strong>Active:</strong> 10 steps, 4 chimes, 1400ms rapid response window.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="box-mini highlight-teal" style="margin-top: 8px;">
+      <strong>🌟 Therapeutic Benefit to the Patient</strong>
+      Dual-tasking (e.g. stepping while responding to an auditory chime) directly simulates real-world challenges like walking while having a conversation. Proven in geriatric research to reduce fall risk and improve cognitive flexibility.
+    </div>
+  </div>
+
+  <!-- 6. Living Market -->
+  <div class="game-card">
+    <div class="game-header">
+      <div class="game-title-group">
+        <h3>6. Living Market</h3>
+        <span class="subtitle">Bazaar & Daily Essentials • Semantic Memory & Budgeting</span>
+      </div>
+      <span class="domain-badge">Executive Function & Working Memory</span>
+    </div>
+    <div class="grid-2col">
+      <div class="box-mini">
+        <strong>🧠 Targeted Cognitive Domain</strong>
+        <ul>
+          <li>Item list retention and working memory manipulation.</li>
+          <li>Category discrimination (vegetables, tea, spices, staples).</li>
+          <li>Basic mental arithmetic and budget selection.</li>
+        </ul>
+      </div>
+      <div class="box-mini">
+        <strong>🕹️ Gameplay & Adaptive Mechanics</strong>
+        <ul>
+          <li><strong>Gentle:</strong> 2 shopping list items, 2 market distractors.</li>
+          <li><strong>Standard:</strong> 3 shopping items, 3 market distractors.</li>
+          <li><strong>Active:</strong> 4 shopping items, 4 market distractors with price balance.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="box-mini highlight-amber" style="margin-top: 8px;">
+      <strong>🌟 Therapeutic Benefit to the Patient</strong>
+      Simulates an everyday bazaar visit (Ima Keithel / Guwahati Market). Preserves community interaction confidence, category identification, and practical problem-solving skills required for daily living.
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- 7. Landmark Pathfinder -->
+  <div class="game-card">
+    <div class="game-header">
+      <div class="game-title-group">
+        <h3>7. Landmark Pathfinder</h3>
+        <span class="subtitle">Heritage Trails of NE India • Spatial Navigation</span>
+      </div>
+      <span class="domain-badge">Spatial Orientation & Topographical Memory</span>
+    </div>
+    <div class="grid-2col">
+      <div class="box-mini">
+        <strong>🧠 Targeted Cognitive Domain</strong>
+        <ul>
+          <li>Spatial navigation, orientation, and mental mapping.</li>
+          <li>Topographical memory (recognizing spatial waypoints).</li>
+          <li>Planning multi-step directional movements.</li>
+        </ul>
+      </div>
+      <div class="box-mini">
+        <strong>🕹️ Gameplay & Adaptive Mechanics</strong>
+        <ul>
+          <li><strong>Gentle:</strong> 2 landmarks on a 3x3 grid with direct path visual guide.</li>
+          <li><strong>Standard:</strong> 3 landmarks on a 4x4 grid with step counter.</li>
+          <li><strong>Active:</strong> 4 landmarks across a complex 4x4 path network.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="box-mini highlight-teal" style="margin-top: 8px;">
+      <strong>🌟 Therapeutic Benefit to the Patient</strong>
+      Navigating famous NE landmarks (Kamakhya Temple, Loktak Lake, Majuli Island, Tawang Monastery) maintains mental spatial maps in the parietal cortex, countering spatial disorientation and wandering tendencies.
+    </div>
+  </div>
+
+  <!-- 8. Cognitive Mini-Test -->
+  <div class="game-card">
+    <div class="game-header">
+      <div class="game-title-group">
+        <h3>8. Cognitive Mini-Test</h3>
+        <span class="subtitle">Gentle Orientation & Recall Reflection</span>
+      </div>
+      <span class="domain-badge">Temporal Orientation & Immediate Recall</span>
+    </div>
+    <div class="grid-2col">
+      <div class="box-mini">
+        <strong>🧠 Targeted Cognitive Domain</strong>
+        <ul>
+          <li>Temporal orientation (current day of week, current month).</li>
+          <li>Immediate verbal and visual stimulus recall.</li>
+          <li>Everyday wellness awareness and reflection.</li>
+        </ul>
+      </div>
+      <div class="box-mini">
+        <strong>🕹️ Gameplay & Adaptive Mechanics</strong>
+        <ul>
+          <li><strong>Gentle:</strong> 3 simple questions with 2 large multiple-choice options.</li>
+          <li><strong>Standard:</strong> 4 questions with 3 choices.</li>
+          <li><strong>Active:</strong> 5 questions covering orientation, recall, and wellness habits.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="box-mini highlight-amber" style="margin-top: 8px;">
+      <strong>🌟 Therapeutic Benefit to the Patient</strong>
+      Provides a calm, daily orientation reality check without clinical intimidation. Helps elderly patients stay anchored to time, date, season, and positive daily wellness routines.
+    </div>
+  </div>
+
+  <!-- 9. Memory Garden & Gamification -->
+  <div class="game-card">
+    <div class="game-header">
+      <div class="game-title-group">
+        <h3>9. Memory Garden</h3>
+        <span class="subtitle">Blossom Wellness & Emotional Positive Reinforcement</span>
+      </div>
+      <span class="domain-badge">Emotional Well-Being & Habit Formation</span>
+    </div>
+    <div class="grid-2col">
+      <div class="box-mini">
+        <strong>🌸 Gamification & Persistence Mechanic</strong>
+        <p>Every completed activity generates soothing "Memory Dew Drops". Patients water virtual indigenous blossoms (Rhodo, Lotus, Wild Orchid, Blue Vanda) in their personalized 3D/2D garden.</p>
+      </div>
+      <div class="box-mini">
+        <strong>💖 Dopaminergic Positive Reinforcement</strong>
+        <p>Replaces stressful "Game Over" and numerical scores with visual growth of peaceful flowers. Builds intrinsic motivation and supports a daily cognitive exercise routine.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: SUMMARY TABLE -->
+  <div class="section-title">
+    <span>📊</span> 3. Cognitive Domains & Pacing Summary Matrix
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Activity Name</th>
+        <th>Target Cognitive Domain</th>
+        <th>Brain Area / Mechanism</th>
+        <th>Adaptive Pacing Range</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Memory Weave</strong></td>
+        <td>Episodic Memory & Visual Recall</td>
+        <td>Hippocampus / Temporal Lobe</td>
+        <td>2 to 4 pairs (4–8 cards)</td>
+      </tr>
+      <tr>
+        <td><strong>Daily Routine</strong></td>
+        <td>Executive Function & Sequencing</td>
+        <td>Prefrontal Cortex / Procedural Memory</td>
+        <td>3 to 5 logical steps</td>
+      </tr>
+      <tr>
+        <td><strong>Sensory Soundscape</strong></td>
+        <td>Auditory Recognition & Calming</td>
+        <td>Auditory Cortex / Sensory Grounding</td>
+        <td>2 to 4 sound choices</td>
+      </tr>
+      <tr>
+        <td><strong>Rhythm Weaver</strong></td>
+        <td>Motor Timing & Working Memory</td>
+        <td>Cerebellum / Auditory-Motor Loop</td>
+        <td>3 to 5 beats (800ms–500ms tempo)</td>
+      </tr>
+      <tr>
+        <td><strong>Dual-Task Journey</strong></td>
+        <td>Divided Attention & Inhibit Control</td>
+        <td>Frontoparietal Attention Network</td>
+        <td>6 to 10 steps (3200ms–1400ms window)</td>
+      </tr>
+      <tr>
+        <td><strong>Living Market</strong></td>
+        <td>Semantic Memory & Mental Math</td>
+        <td>Executive Function & Semantic Store</td>
+        <td>2 to 4 items + distractors</td>
+      </tr>
+      <tr>
+        <td><strong>Landmark Pathfinder</strong></td>
+        <td>Spatial Orientation & Navigation</td>
+        <td>Parietal Lobe / Grid Navigation</td>
+        <td>2 to 4 landmarks (3x3 to 4x4 grid)</td>
+      </tr>
+      <tr>
+        <td><strong>Cognitive Mini-Test</strong></td>
+        <td>Temporal Orientation & Recall</td>
+        <td>Orientation & Immediate Memory</td>
+        <td>3 to 5 reflective questions</td>
+      </tr>
+      <tr>
+        <td><strong>Memory Garden</strong></td>
+        <td>Emotional Well-being & Reward</td>
+        <td>Dopaminergic Habit & Calm Loop</td>
+        <td>Blossom nurturing per session</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 4: BENEFITS TO CAREGIVERS & HEALTHCARE -->
+  <div class="section-title">
+    <span>🤝</span> 4. Clinical & Practical Value for Caregivers & Healthcare
+  </div>
+
+  <div class="grid-2col" style="margin-bottom: 16px;">
+    <div class="box-mini highlight-teal">
+      <strong>👨‍👩‍👧 For Families & Caregivers</strong>
+      <ul>
+        <li><strong>Automated Activity Tracking:</strong> View daily completions, active streaks, and engagement history in real time.</li>
+        <li><strong>Objective Trend Monitoring:</strong> Tracks longitudinal accuracy and reaction comfort across 5 cognitive dimensions.</li>
+        <li><strong>Reduced Caregiver Stress:</strong> Guided audio and adaptive pacing allow patients to enjoy activities independently.</li>
+      </ul>
+    </div>
+    <div class="box-mini highlight-amber">
+      <strong>🏥 For Healthcare Systems & MDoNER / MoHFW</strong>
+      <ul>
+        <li><strong>Scalable Tele-Rehabilitation:</strong> Deploys culturally attuned cognitive stimulation to remote NER hill districts.</li>
+        <li><strong>No Special Hardware Needed:</strong> Works seamlessly on any Android smartphone, tablet, or web browser.</li>
+        <li><strong>Early Subtle Decline Detection:</strong> Multi-session rolling performance metrics provide non-invasive longitudinal wellness telemetry.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Medical Disclaimer -->
+  <div class="disclaimer-box">
+    <strong>⚠️ Non-Diagnostic Clinical Safety Notice</strong>
+    SmritiCare NER activities and baseline check are intended exclusively for cognitive wellness stimulation, daily routine maintenance, and non-diagnostic progress tracking. They are not intended to diagnose, treat, or cure dementia, Alzheimer's disease, or any medical neurological condition.
+  </div>
+
+</div>
+
+</body>
+</html>

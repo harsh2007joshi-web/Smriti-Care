@@ -1,0 +1,11 @@
+{
+  "name": "smriti2-0-root",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm --prefix \"Smriti2.0 - Copy (2)\" run dev",
+    "build": "npm --prefix \"Smriti2.0 - Copy (2)\" run build",
+    "preview": "npm --prefix \"Smriti2.0 - Copy (2)\" run preview",
+    "lint": "npm --prefix \"Smriti2.0 - Copy (2)\" run lint"
+  }
+}
